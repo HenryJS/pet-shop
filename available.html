@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/2231b22433.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <title>Eldo Pets</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <a href="index.html"><image src="images/png.png" width="105px"></a>
+                    </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="index.html">Home</a></li> 
+                    <li><a href="available.html">Available Breeds</a></li> 
+                    <li><a href="pre-reserve.html">Pre-reserve</a></li> 
+                    <li><a href="contact.html">Contact us</a></li> 
+                    <li><a href="about.html">About</a></li> 
+                 </ul>
+
+            </nav>
+            <img src="images/icons8-menu-30.png" class="menu-icon" onclick="menutoggle()">
+
+        </div>
+
+        </div>
+
+    </div>
+<!---available breeds -->
+<div class="wrapper">
+    <nav class="breeds">
+        <div class="items">
+            <span class="item active" data-name="all">All</span>
+            <span class="item" data-name="german">German Shepherd</span>
+            <span class="item" data-name="bernerd">St Bernard</span>
+            <span class="item" data-name="japanese">Japanese Spitz</span>
+        </div>
+    </nav>
+    <!----filter images-->
+    <div class="gallery">
+        <div class="image" data-name="german"><span><img src="images/DSC_0186.jpg" alt=""></span></div>
+        <div class="image" data-name="german"><span><img src="images/DSC_0181.jpg" alt=""></span></div>
+        <div class="image" data-name="german"><span><img src="images/DSC_0190.jpg" alt=""></span></div>
+        <div class="image" data-name="german"><span><img src="images/DSC_0180.jpg" alt=""></span></div>
+        <div class="image" data-name="bernerd"><span><img src="images/DSC_0225.jpg" alt=""></span></div>
+        <div class="image" data-name="bernerd"><span><img src="images/DSC_0218.jpg" alt=""></span></div>
+        <div class="image" data-name="bernerd"><span><img src="images/DSC_0224.jpg" alt=""></span></div>
+        <div class="image" data-name="bernerd"><span><img src="images/DSC_0221.jpg" alt=""></span></div>
+        <div class="image" data-name="japanese"><span><img src="images/DSC_0021.jpg" alt=""></span></div>
+        <div class="image" data-name="japanese"><span><img src="images/DSC_0013.jpg" alt=""></span></div>
+        <div class="image" data-name="japanese"><span><img src="images/DSC_0020.jpg" alt=""></span></div>
+        <div class="image" data-name="japanese"><span><img src="images/DSC_0027.jpg" alt=""></span></div>
+    </div>
+</div>
+
+<!----footer-->
+<footer>
+    <div class="row1">
+        <div class="col1">
+            <img src="images/png.png" class="logooo">
+            <p>EldoPets is a one stop website for acquiring a pet of your choice. the company was foundes
+                back in 2016 in Eldoret and has since grown and specialised in 3 diferent breeds paticularly(Japanese Spitz, German Shephard, and St Bernard).</p>
+        </div>
+        <div class="col1">
+            <h3>Location <div class="underline"><span></span></div></h3>
+            <p>Old  Nairobi Road</p>
+            <p>Elgon View</p>
+            <p>Eldoret, Kenya</p>
+            <p class="email-id">eldopets@outlook.com</p>
+            <h4>+254 - 729929832</h4>
+        </div>
+        <div class="col1">
+            <h3>Links <div class="underline"><span></span></div></h3>
+            <ul>
+                <li><a href="index.html">Home</a> </li>
+                <li><a href="available.html">Available Breeds</a> </li>
+                <li><a href="pre-reserve.html">Pre-reserve</a> </li>
+                <li><a href="about.html">About Us</a> </li>
+            </ul>
+        </div>
+        <div class="col1">
+            <h3>Newsletter <div class="underline"><span></span></div></h3>
+            <form >
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your email id" required>
+                <button type="submit"><i class="fa-solid fa-arrow-right-long"></i></button>
+            </form>
+            <div class="social-icons">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="copyright">EldoPets &copy; 2021 - All Rights Reserved</p>
+</footer>
+
+<!------js for filtering --------->
+    <script type="text/javascript">
+        //selecting required breeds
+    const filterItem = document.querySelector(".items");
+    const filterImg = document.querySelectorAll(".image");
+
+    window.onload = ()=>{ //once window loaded
+        filterItem.onclick = (selectedItem)=>{//on clicking filterItem div
+            if(selectedItem.target.classList.contains("item")){
+                filterItem.querySelector(".active").classList.remove("active");//remove the acative class in the first element
+                selectedItem.target.classList.add("active");
+                let filterName = selectedItem.target.getAttribute("data-name");//getting name value of the selected item
+                filterImg.forEach((image)=>{
+                    let filterImages = image.getAttribute("data-name"); //geting image data-name value
+
+                    if((filterImges == filterName) || (filterName == "all")){
+                    image.classList.remove("hide"); //first remove the hide class from the image
+                    image.classList.add("show"); //add show class in image
+                    }else{
+                    image.classList.add("hide"); //add hide class in image
+                    image.classList.remove("show"); //remove show class from the image
+                    }
+                });
+            }
+        }
+    }
+    </script>
+</body>
+</html>
